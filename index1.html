@@ -1,0 +1,88 @@
+<!-- Задача 2.
+Во продолжение е даден следниот API endpoint: https://rickandmortyapi.com/api/character кој што враќа податоци за карактерите од цртаниот филм Rick
+and Morty. Ваша задача е да ги прикажете следниве податоци за секој карактер во форма на картичка:
+
+Слика
+Име
+Пол
+Статус
+Бројот на епизоди во кој се појавил
+Дополнително:
+
+Еден ред да содржи 5 картички.
+Доколку статусот на карактерот е “Alive” текстот да биде во зелена боја, доколку е “Dead” текстот да биде во црвена боја, доколку е “Unknown” да 
+биде во сива боја.
+За стилизирање да се искористи екстерен CSS фајл. -->
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture_7_homework_2</title>
+    <link rel="stylesheet" href="index1.css">
+</head>
+
+<body>
+    <div id="characters-container"></div>
+
+
+    <script>
+        async function fetchCharacters(character) {
+            try {
+                const response = await fetch("https://rickandmortyapi.com/api/character")
+                const data = await response.json()
+
+                const charactersContainer = document.getElementById("characters-container")
+
+                data.results.forEach((character) => {
+                    const characterCard = document.createElement("div")
+                    characterCard.classList.add("individualCharacter")
+
+                    const characterImage = document.createElement("img")
+                    characterImage.src = character.image
+                    characterImage.alt = character.name
+                    characterImage.classList.add("characterImage")
+                    characterCard.appendChild(characterImage)
+
+                    const characterName = document.createElement("h3")
+                    characterName.textContent = character.name
+                    characterCard.appendChild(characterName)
+
+                    const characterGender = document.createElement("p")
+                    characterGender.textContent = character.gender
+                    characterCard.appendChild(characterGender)
+
+                    const characterStatus = document.createElement("p")
+                    characterStatus.textContent = character.status
+                    if (characterStatus.textContent === "Alive") {
+                        characterStatus.style.color = "green"
+
+                    }
+                    else if (characterStatus.textContent === "Dead") {
+                        characterStatus.style.color = "red"
+
+                    } else {
+                        characterStatus.style.color = "grey"
+
+                    }
+                    characterCard.appendChild(characterStatus)
+
+                    const characterNumberOfEpisodes = document.createElement("p")
+                    characterNumberOfEpisodes.textContent = `Episodes: ${character.episode.length}`
+                    characterCard.appendChild(characterNumberOfEpisodes)
+
+
+                    charactersContainer.appendChild(characterCard)
+
+                })
+            } catch (error) {
+                console.log("Error:", error)
+            }
+        }
+
+        fetchCharacters()
+    </script>
+</body>
+
+</html>
