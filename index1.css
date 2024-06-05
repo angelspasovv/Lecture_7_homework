@@ -1,0 +1,30 @@
+body {
+    background-color:rgb(233,245,222) ;
+}
+
+.individualCharacter {
+    display: inline-block;
+    background-color: rgb(157,233,77);
+    border: solid rgb(215, 90, 90) 5px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.characterImage {
+    width: 240px;
+    
+}
+
+h3, p {
+    display: flex;
+    justify-content: center;
+    
+}
+
+h3 {
+    color: rgb(50, 11, 167);
+}
+
+
+
+
