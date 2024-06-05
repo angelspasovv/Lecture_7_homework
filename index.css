@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(205, 232, 255);
+}
+
+.individualUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+#users-container {
+    margin-top: 10vH;
+}
+
+.user-name {
+    background-color: greenyellow;
+    margin-right: 40px;
+}
+
+.phone-number {
+    background-color: rgb(175, 39, 220);
+    margin-right: 40px;
+    color: aliceblue;
+}
+
+.company {
+    background-color: blue;
+    color: white;
+    
+}
